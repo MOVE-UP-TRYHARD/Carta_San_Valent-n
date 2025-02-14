@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta San Valentín</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #f9e6e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: auto; /* Permite desplazamiento */
+            flex-direction: column;
+            padding: 20px;
+        }
+        /* Estilo del sobre cerrado */
+        .envelope-closed {
+            width: 300px;
+            height: 200px;
+            background-color: #ffcccc;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.5s ease;
+        }
+        .envelope-closed:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 100px solid #ff9999;
+        }
+        .envelope-closed:after {
+            content: '';
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 300px;
+            height: 100px;
+            background-color: #ff9999;
+        }
+        .envelope-closed .sticker {
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        /* Estilo del sobre abierto */
+        .envelope-open {
+            display: none;
+            width: 90%;
+            max-width: 400px;
+            background-color: #fff3e6;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            border: 2px solid #ffcccc;
+            max-height: 80vh;
+            overflow-y: auto; /* Permite desplazamiento si es necesario */
+        }
+        .envelope-open h1 {
+            font-size: 24px;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+        .envelope-open p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .gift {
+            margin-top: 15px;
+            cursor: pointer;
+        }
+        .gift img {
+            width: 80px;
+            height: 80px;
+            transition: transform 0.3s ease;
+        }
+        .gift img:hover {
+            transform: scale(1.1);
+        }
+        .heart {
+            display: none;
+            font-size: 50px;
+            color: #e74c3c;
+            margin-top: 15px;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 20px;
+            color: #e74c3c;
+            margin-top: 15px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sobre cerrado -->
+    <div class="envelope-closed" id="envelopeClosed" onclick="openEnvelope()">
+        <div class="sticker"></div>
+    </div>
+
+    <!-- Sobre abierto con la carta -->
+    <div class="envelope-open" id="envelopeOpen">
+        <h1>Para mi Amorcito ❤️</h1>
+        <p>Hola mi vida 🤗,</p>
+        <p>Quiero que sepas lo mucho que significas para mí. Eres la persona más especial en mi vida, y cada día a tu lado es un regalo que atesoro con todo mi corazón.</p>
+        <p>Gracias por ser mi compañera, mi apoyo y mi razón para sonreír. Eres única, y no puedo imaginar mi vida sin ti 🫴🤌🫢.</p>
+        <p>Me gustas mucho muchísimo chopita 👉👈</p>
+        <div class="gift" onclick="showHeart()">
+            <img src="https://www.ie.edu/ie-elecnor-hub-on-ethical-business/wp-content/uploads/2021/11/regalo.png" alt="Regalo">
+        </div>
+        <div class="heart" id="heart">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfgxbe82Wpg5wzjM0WpHo3WQJ2mXR2GavvCw&s" alt="Corazón">
+        </div>
+        <p class="signature">Con todo mi amor,<br>Tu novio</p>
+    </div>
+
+    <script>
+        // Función para abrir el sobre
+        function openEnvelope() {
+            document.getElementById('envelopeClosed').style.display = 'none';
+            document.getElementById('envelopeOpen').style.display = 'block';
+        }
+
+        // Función para mostrar el corazón sin perder la parte superior de la carta
+        function showHeart() {
+            document.getElementById('heart').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
